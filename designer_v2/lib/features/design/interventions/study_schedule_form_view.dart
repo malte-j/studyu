@@ -10,7 +10,7 @@ import 'package:studyu_designer_v2/localization/app_translation.dart';
 import 'package:studyu_designer_v2/utils/input_formatter.dart';
 
 class StudyScheduleFormView extends FormConsumerWidget {
-  const StudyScheduleFormView({required this.formViewModel, Key? key}) : super(key: key);
+  const StudyScheduleFormView({required this.formViewModel, super.key});
 
   final StudyScheduleControls formViewModel;
 
@@ -144,7 +144,6 @@ class StudyScheduleFormView extends FormConsumerWidget {
                 ],
               ),
             ),
-            // TODO washout
           ],
           columnWidths: const {
             0: MaxColumnWidth(FixedColumnWidth(130), IntrinsicColumnWidth()),

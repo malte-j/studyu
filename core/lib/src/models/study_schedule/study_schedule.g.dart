@@ -8,25 +8,43 @@ part of 'study_schedule.dart';
 
 StudySchedule _$StudyScheduleFromJson(Map<String, dynamic> json) =>
     StudySchedule(
-      sequenceCustom: json['sequenceCustom'] as String? ?? 'ABAB',
-    )
-      ..numberOfCycles = json['numberOfCycles'] as int
-      ..phaseDuration = json['phaseDuration'] as int
-      ..includeBaseline = json['includeBaseline'] as bool
-      ..sequence = $enumDecode(_$PhaseSequenceEnumMap, json['sequence']);
+      (json['interventions'] as List<dynamic>)
+          .map((e) => Intervention.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      (json['segments'] as List<dynamic>)
+          .map((e) => StudyScheduleSegment.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$StudyScheduleToJson(StudySchedule instance) =>
     <String, dynamic>{
-      'numberOfCycles': instance.numberOfCycles,
-      'phaseDuration': instance.phaseDuration,
-      'includeBaseline': instance.includeBaseline,
-      'sequence': instance.sequence.toJson(),
-      'sequenceCustom': instance.sequenceCustom,
+      'interventions': instance.interventions.map((e) => e.toJson()).toList(),
+      'segments': instance.segments.map((e) => e.toJson()).toList(),
     };
 
-const _$PhaseSequenceEnumMap = {
-  PhaseSequence.alternating: 'alternating',
-  PhaseSequence.counterBalanced: 'counterBalanced',
-  PhaseSequence.randomized: 'randomized',
-  PhaseSequence.customized: 'customized',
-};
+StudyScheduleSegment _$StudyScheduleSegmentFromJson(
+        Map<String, dynamic> json) =>
+    StudyScheduleSegment();
+
+Map<String, dynamic> _$StudyScheduleSegmentToJson(
+        StudyScheduleSegment instance) =>
+    <String, dynamic>{};
+
+Baseline _$BaselineFromJson(Map<String, dynamic> json) => Baseline(
+      json['duration'] as int,
+    );
+
+Map<String, dynamic> _$BaselineToJson(Baseline instance) => <String, dynamic>{
+      'duration': instance.duration,
+    };
+
+Alternating _$AlternatingFromJson(Map<String, dynamic> json) => Alternating(
+      json['interventionDuration'] as int,
+      json['cycleAmount'] as int,
+    );
+
+Map<String, dynamic> _$AlternatingToJson(Alternating instance) =>
+    <String, dynamic>{
+      'interventionDuration': instance.interventionDuration,
+      'cycleAmount': instance.cycleAmount,
+    };

@@ -22,7 +22,7 @@ import 'task_overview_tab/task_overview.dart';
 class DashboardScreen extends StatefulWidget {
   final String? error;
 
-  const DashboardScreen({Key? key, this.error}) : super(key: key);
+  const DashboardScreen({super.key, this.error});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -271,7 +271,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 class StudyFinishedPlaceholder extends StatelessWidget {
   static const space = SizedBox(height: 80);
 
-  const StudyFinishedPlaceholder({Key? key}) : super(key: key);
+  const StudyFinishedPlaceholder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -296,7 +296,7 @@ class StudyFinishedPlaceholder extends StatelessWidget {
             ),
             space,
             OutlinedButton.icon(
-              onPressed: () => Navigator.pushNamedAndRemoveUntil(context, Routes.studySelection, (_) => false),
+              onPressed: () => Navigator.pushNamed(context, Routes.studySelection),
               icon: Icon(MdiIcons.clipboardArrowRightOutline, size: fontSize),
               label: Text(AppLocalizations.of(context)!.study_selection, style: textStyle),
             ),

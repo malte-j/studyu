@@ -16,7 +16,7 @@ class LoadingScreen extends StatefulWidget {
   final String? sessionString;
   final Map<String, String>? queryParameters;
 
-  const LoadingScreen({Key? key, this.sessionString, this.queryParameters}) : super(key: key);
+  const LoadingScreen({super.key, this.sessionString, this.queryParameters});
 
   @override
   State<StatefulWidget> createState() => _LoadingScreenState();
@@ -107,8 +107,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
           // todo not sure which includeBaseline statement is needed.
           // Either one of here or in preview.createFakeSubject
           // maybe remove
-          state.selectedStudy!.schedule.includeBaseline = false;
-          state.activeSubject!.study.schedule.includeBaseline = false;
           // print("[PreviewApp]: Route preview");
           if (!mounted) return;
           // print("[PreviewApp]: Go to dashboard");
