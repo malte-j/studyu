@@ -144,7 +144,6 @@ class StudyScheduleFormView extends FormConsumerWidget {
                 ],
               ),
             ),
-            // TODO washout
           ],
           columnWidths: const {
             0: MaxColumnWidth(FixedColumnWidth(130), IntrinsicColumnWidth()),

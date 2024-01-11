@@ -61,7 +61,7 @@ class Study extends SupabaseObjectFunctions<Study>
   late List<ConsentItem> consent = [];
   late List<Intervention> interventions = [];
   late List<Observation> observations = [];
-  late StudySchedule schedule = StudySchedule();
+  late StudySchedule schedule = StudySchedule(interventions, []);
   @JsonKey(name: 'report_specification')
   late ReportSpecification reportSpecification = ReportSpecification();
   late List<StudyResult> results = [];
@@ -206,7 +206,7 @@ class Study extends SupabaseObjectFunctions<Study>
       : 0;
 
   double get percentageMissedDays =>
-      totalMissedDays / (participantCount * schedule.length);
+      totalMissedDays / (participantCount * schedule.duration);
 
   static Future<String> fetchResultsCSVTable(String studyId) async {
     final List res;

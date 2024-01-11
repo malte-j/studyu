@@ -8,22 +8,22 @@ import 'package:studyu_designer_v2/features/forms/form_view_model.dart';
 import 'package:studyu_designer_v2/localization/app_translation.dart';
 
 mixin StudyScheduleControls {
-  static const defaultScheduleType = PhaseSequence.alternating;
+  // static const defaultScheduleType = PhaseSequence.alternating;
   static const defaultScheduleTypeSequence = 'ABAB';
   static const defaultNumCycles = 2;
   static const defaultPeriodLength = 7;
 
-  final FormControl<PhaseSequence> sequenceTypeControl = FormControl(value: defaultScheduleType);
+  // final FormControl<PhaseSequence> sequenceTypeControl = FormControl(value: defaultScheduleType);
   final FormControl<String> sequenceTypeCustomControl = FormControl(value: defaultScheduleTypeSequence);
   final FormControl<int> phaseDurationControl = FormControl(value: defaultPeriodLength);
   final FormControl<int> numCyclesControl = FormControl(value: defaultNumCycles);
   final FormControl<bool> includeBaselineControl = FormControl(value: true);
 
-  List<FormControlOption<PhaseSequence>> get sequenceTypeControlOptions =>
-      PhaseSequence.values.map((v) => FormControlOption(v, v.string)).toList();
+  // List<FormControlOption<PhaseSequence>> get sequenceTypeControlOptions =>
+  //     PhaseSequence.values.map((v) => FormControlOption(v, v.string)).toList();
 
   late final studyScheduleControls = {
-    'sequenceType': sequenceTypeControl,
+    // 'sequenceType': sequenceTypeControl,
     'sequenceTypeCustom': sequenceTypeCustomControl,
     'numCycles': numCyclesControl,
     'phaseDuration': phaseDurationControl,
@@ -77,7 +77,7 @@ mixin StudyScheduleControls {
       });
 
   void setStudyScheduleControlsFrom(StudyScheduleFormData data) {
-    sequenceTypeControl.value = data.sequenceType;
+    // sequenceTypeControl.value = data.sequenceType;
     sequenceTypeCustomControl.value = data.sequenceTypeCustom;
     numCyclesControl.value = data.numCycles;
     phaseDurationControl.value = data.phaseDuration;
@@ -86,7 +86,7 @@ mixin StudyScheduleControls {
 
   StudyScheduleFormData buildStudyScheduleFormData() {
     return StudyScheduleFormData(
-      sequenceType: sequenceTypeControl.value!, // required
+      // sequenceType: sequenceTypeControl.value!, // required
       sequenceTypeCustom: sequenceTypeCustomControl.value!, // required
       numCycles: numCyclesControl.value!, // required
       phaseDuration: phaseDurationControl.value!, // required

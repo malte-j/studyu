@@ -49,7 +49,6 @@ class AppState with ChangeNotifier {
 
   void updateStudy(Study study) {
     // todo baseline
-    study.schedule.includeBaseline = false;
     selectedStudy = study;
     if (activeSubject!.study.id == study.id) {
       activeSubject!.study = study;

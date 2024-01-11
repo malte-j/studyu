@@ -107,8 +107,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
           // todo not sure which includeBaseline statement is needed.
           // Either one of here or in preview.createFakeSubject
           // maybe remove
-          state.selectedStudy!.schedule.includeBaseline = false;
-          state.activeSubject!.study.schedule.includeBaseline = false;
           // print("[PreviewApp]: Route preview");
           if (!mounted) return;
           // print("[PreviewApp]: Go to dashboard");

@@ -133,7 +133,6 @@ class Preview {
           subject = studySubjects.lastWhere(
             (foundSubject) {
               // todo baseline
-              foundSubject.study.schedule.includeBaseline = false;
               return foundSubject.userId == Supabase.instance.client.auth.currentUser!.id &&
                   foundSubject.studyId == study!.id &&
                   listEquals(
@@ -170,22 +169,14 @@ class Preview {
     if (createSubject) {
       // Create a new study subject
       subject = await _createFakeSubject(state);
-      if (selectedRoute == '/intervention') {
-        // print("disable base 2");
-        // todo might be unnecessary if we have study.schedule.includeBaseline = false;
-        subject!.study.schedule.includeBaseline = false;
-      }
+     
       return subject;
     }
     return null;
   }
 
   Future<StudySubject?> _createFakeSubject(AppState state) async {
-    if (selectedRoute == '/intervention') {
-      // todo maybe remove
-      // print("disable base ?");
-      study!.schedule.includeBaseline = false;
-    }
+   
     subject = StudySubject.fromStudy(
       study!,
       Supabase.instance.client.auth.currentUser!.id,
